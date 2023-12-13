@@ -1,0 +1,6 @@
+framework module Pods_theMost_theMostUITests {
+  umbrella header "Pods-theMost-theMostUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
