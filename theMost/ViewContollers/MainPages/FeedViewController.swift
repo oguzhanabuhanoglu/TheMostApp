@@ -1,0 +1,19 @@
+//
+//  ViewController.swift
+//  theMost
+//
+//  Created by Oğuzhan Abuhanoğlu on 14.12.2023.
+//
+
+import UIKit
+
+class FeedViewController: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+    }
+
+
+}
+
