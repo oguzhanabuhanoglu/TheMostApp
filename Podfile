@@ -9,9 +9,9 @@ target 'theMost' do
 
 pod 'FirebaseAnalytics'
 pod 'FirebaseAuth'
-pod 'FirebaseFirestore'
 pod 'FirebaseStorage'
 pod 'FirebaseCore'
+pod 'FirebaseDatabase'
 
   target 'theMostTests' do
     inherit! :search_paths

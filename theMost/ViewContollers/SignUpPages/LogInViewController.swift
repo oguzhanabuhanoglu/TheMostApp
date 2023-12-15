@@ -140,8 +140,36 @@ class LogInViewController: UIViewController{
         
         //login functionality
         
+        var username : String?
+        var email : String?
+        
+        if usernameEmail.contains("@"), usernameEmail.contains("."){
+            //email
+            email = usernameEmail
+        }else{
+            //username
+            username = usernameEmail
+        }
+        
+        AuthManager.shared.loginUser(username: username, email: email, password: password) { success in
+            DispatchQueue.main.async {
+                if success {
+                    //user logged in
+                    self.dismiss(animated: true,completion: nil)
+                }else {
+                    //error
+                    let alert = UIAlertController(title: "Log In error", message: "we were unable to log you in", preferredStyle: UIAlertController.Style.alert)
+                    let dismiss = UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default, handler: nil)
+                    alert.addAction(dismiss)
+                    self.present(alert, animated: true)
+                }
+            }
+        }
+        
         
     }
+    
+    
     
     @objc private func didTaptoSignupButton() {
         

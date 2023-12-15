@@ -74,6 +74,10 @@ class SignUpViewController: UIViewController {
         view.backgroundColor = .systemBackground
         navigationItem.title = "Create New Account"
         
+        usernameText.delegate = self
+        emailText.delegate = self
+        passwordText.delegate = self
+        
         addSubviews()
         
         signUpButton.addTarget(self, action: #selector(didTapSignUpButton), for: UIControl.Event.touchUpInside)
@@ -99,12 +103,49 @@ class SignUpViewController: UIViewController {
         passwordText.frame = CGRect(x: widht * 0.5 - (widht * 0.9) / 2, y: height * 0.24, width: widht * 0.9 , height: height * 0.055)
         signUpButton.frame = CGRect(x: widht * 0.5 - (widht * 0.9) / 2, y: height * 0.33, width: widht * 0.9 , height: height * 0.055)
         
+        signUpButton.addTarget(self, action: #selector(didTapSignUpButton), for: UIControl.Event.touchUpInside)
     }
     
     @objc private func didTapSignUpButton() {
-        //create new user
+        
+        usernameText.resignFirstResponder()
+        emailText.resignFirstResponder()
+        passwordText.resignFirstResponder()
+        
+        guard let username = usernameText.text, !username.isEmpty,
+           let email = emailText.text, !email.isEmpty,
+           let password = passwordText.text, !password.isEmpty, password.count >= 8 else {
+            return
+        }
+        
+        //create user
+        
+        AuthManager.shared.registerNewUser(username: username, email: email, password: password) { registered in
+            DispatchQueue.main.async {
+                if registered {
+                    //good to go
+                }else{
+                    //failed
+                }
+            }
+        }
+        
+        
     }
-    
+     
+}
 
- 
+
+extension SignUpViewController : UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == usernameText {
+            emailText.becomeFirstResponder()
+        }else if textField == emailText {
+            passwordText.becomeFirstResponder()
+        }else{
+            didTapSignUpButton()
+        }
+        
+        return true
+    }
 }

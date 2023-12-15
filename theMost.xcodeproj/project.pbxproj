@@ -19,7 +19,6 @@
 		BFE2A3CB2B2A57F800EABD48 /* theMostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE2A3CA2B2A57F800EABD48 /* theMostTests.swift */; };
 		BFE2A3D52B2A57F800EABD48 /* theMostUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE2A3D42B2A57F800EABD48 /* theMostUITests.swift */; };
 		BFE2A3D72B2A57F800EABD48 /* theMostUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE2A3D62B2A57F800EABD48 /* theMostUITestsLaunchTests.swift */; };
-		BFE2A3E42B2A593E00EABD48 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BFE2A3E32B2A593E00EABD48 /* GoogleService-Info.plist */; };
 		BFE2A3EC2B2A63EA00EABD48 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE2A3EB2B2A63EA00EABD48 /* SearchViewController.swift */; };
 		BFE2A3EE2B2A63F700EABD48 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE2A3ED2B2A63F700EABD48 /* ProfileViewController.swift */; };
 		BFE2A3F02B2A641D00EABD48 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE2A3EF2B2A641D00EABD48 /* LogInViewController.swift */; };
@@ -27,6 +26,8 @@
 		BFE2A3F42B2A655E00EABD48 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE2A3F32B2A655E00EABD48 /* AuthManager.swift */; };
 		BFE2A3F62B2A656D00EABD48 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE2A3F52B2A656D00EABD48 /* DatabaseManager.swift */; };
 		BFE2A3F82B2A657A00EABD48 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE2A3F72B2A657A00EABD48 /* StorageManager.swift */; };
+		BFE2A3FA2B2CD6BC00EABD48 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE2A3F92B2CD6BC00EABD48 /* File.swift */; };
+		BFE2A3FC2B2CEE1700EABD48 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BFE2A3FB2B2CEE1700EABD48 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,7 +69,6 @@
 		BFE2A3D02B2A57F800EABD48 /* theMostUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = theMostUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFE2A3D42B2A57F800EABD48 /* theMostUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = theMostUITests.swift; sourceTree = "<group>"; };
 		BFE2A3D62B2A57F800EABD48 /* theMostUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = theMostUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		BFE2A3E32B2A593E00EABD48 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "theMost/General/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		BFE2A3EB2B2A63EA00EABD48 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		BFE2A3ED2B2A63F700EABD48 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		BFE2A3EF2B2A641D00EABD48 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +76,8 @@
 		BFE2A3F32B2A655E00EABD48 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		BFE2A3F52B2A656D00EABD48 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		BFE2A3F72B2A657A00EABD48 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		BFE2A3F92B2CD6BC00EABD48 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		BFE2A3FB2B2CEE1700EABD48 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C1705B4470319B986A6C0D60 /* Pods_theMost.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_theMost.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -202,6 +204,7 @@
 		BFE2A3E72B2A62E200EABD48 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				BFE2A3F92B2CD6BC00EABD48 /* File.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -215,7 +218,7 @@
 				BFE2A3BC2B2A57F800EABD48 /* Assets.xcassets */,
 				BFE2A3BE2B2A57F800EABD48 /* LaunchScreen.storyboard */,
 				BFE2A3C12B2A57F800EABD48 /* Info.plist */,
-				BFE2A3E32B2A593E00EABD48 /* GoogleService-Info.plist */,
+				BFE2A3FB2B2CEE1700EABD48 /* GoogleService-Info.plist */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -349,7 +352,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFE2A3C02B2A57F800EABD48 /* LaunchScreen.storyboard in Resources */,
-				BFE2A3E42B2A593E00EABD48 /* GoogleService-Info.plist in Resources */,
+				BFE2A3FC2B2CEE1700EABD48 /* GoogleService-Info.plist in Resources */,
 				BFE2A3BD2B2A57F800EABD48 /* Assets.xcassets in Resources */,
 				BFE2A3BB2B2A57F700EABD48 /* Main.storyboard in Resources */,
 			);
@@ -488,6 +491,7 @@
 				BFE2A3EC2B2A63EA00EABD48 /* SearchViewController.swift in Sources */,
 				BFE2A3F82B2A657A00EABD48 /* StorageManager.swift in Sources */,
 				BFE2A3B62B2A57F700EABD48 /* SceneDelegate.swift in Sources */,
+				BFE2A3FA2B2CD6BC00EABD48 /* File.swift in Sources */,
 				BFE2A3F62B2A656D00EABD48 /* DatabaseManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
