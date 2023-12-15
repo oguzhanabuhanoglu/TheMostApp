@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XY2-2B-dUc">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
@@ -31,7 +31,7 @@
         <scene sceneID="tR6-2m-DEi">
             <objects>
                 <navigationController id="NqY-qa-tB3" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="house" catalog="system" id="K95-CO-9Pe"/>
+                    <tabBarItem key="tabBarItem" title="" image="magnifyingglass" catalog="system" id="K95-CO-9Pe"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="lwv-o3-vop">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -65,7 +65,7 @@
         <scene sceneID="nAS-1P-Dqy">
             <objects>
                 <navigationController id="rxy-eF-7Js" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="magnifyingglass" catalog="system" id="Dyn-sI-CYV"/>
+                    <tabBarItem key="tabBarItem" title="" image="house" catalog="system" id="Dyn-sI-CYV"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="r0z-ss-loX">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -78,10 +78,10 @@
             </objects>
             <point key="canvasLocation" x="-1013" y="304"/>
         </scene>
-        <!--View Controller-->
+        <!--Feed View Controller-->
         <scene sceneID="xfe-A5-NVH">
             <objects>
-                <viewController id="Eem-RP-4OT" sceneMemberID="viewController">
+                <viewController id="Eem-RP-4OT" customClass="FeedViewController" customModule="theMost" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eqp-6T-T8G">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -94,10 +94,10 @@
             </objects>
             <point key="canvasLocation" x="-1015" y="1016"/>
         </scene>
-        <!--View Controller-->
+        <!--Profile View Controller-->
         <scene sceneID="F2X-B1-vZr">
             <objects>
-                <viewController id="gUD-pi-o5K" sceneMemberID="viewController">
+                <viewController id="gUD-pi-o5K" customClass="ProfileViewController" customModule="theMost" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aYJ-7G-gWP">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -110,10 +110,10 @@
             </objects>
             <point key="canvasLocation" x="659" y="1015"/>
         </scene>
-        <!--View Controller-->
+        <!--Search View Controller-->
         <scene sceneID="mEh-Nl-HLr">
             <objects>
-                <viewController id="AtW-oX-R09" sceneMemberID="viewController">
+                <viewController id="AtW-oX-R09" customClass="SearchViewController" customModule="theMost" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="czP-7r-fos">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

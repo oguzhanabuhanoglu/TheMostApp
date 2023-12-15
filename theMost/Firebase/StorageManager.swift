@@ -5,4 +5,11 @@
 //  Created by Oğuzhan Abuhanoğlu on 14.12.2023.
 //
 
-import Foundation
+import FirebaseStorage
+
+public class StorageManager {
+    
+    static let shared = StorageManager()
+    
+    
+}
