@@ -28,6 +28,7 @@
 		BFE2A3F82B2A657A00EABD48 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE2A3F72B2A657A00EABD48 /* StorageManager.swift */; };
 		BFE2A3FA2B2CD6BC00EABD48 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE2A3F92B2CD6BC00EABD48 /* File.swift */; };
 		BFE2A3FC2B2CEE1700EABD48 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BFE2A3FB2B2CEE1700EABD48 /* GoogleService-Info.plist */; };
+		BFE2A3FE2B2DC6EA00EABD48 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE2A3FD2B2DC6EA00EABD48 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		BFE2A3F72B2A657A00EABD48 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		BFE2A3F92B2CD6BC00EABD48 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		BFE2A3FB2B2CEE1700EABD48 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BFE2A3FD2B2DC6EA00EABD48 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C1705B4470319B986A6C0D60 /* Pods_theMost.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_theMost.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -238,6 +240,7 @@
 				BFE2A3B72B2A57F700EABD48 /* FeedViewController.swift */,
 				BFE2A3EB2B2A63EA00EABD48 /* SearchViewController.swift */,
 				BFE2A3ED2B2A63F700EABD48 /* ProfileViewController.swift */,
+				BFE2A3FD2B2DC6EA00EABD48 /* SettingsViewController.swift */,
 			);
 			path = MainPages;
 			sourceTree = "<group>";
@@ -493,6 +496,7 @@
 				BFE2A3B62B2A57F700EABD48 /* SceneDelegate.swift in Sources */,
 				BFE2A3FA2B2CD6BC00EABD48 /* File.swift in Sources */,
 				BFE2A3F62B2A656D00EABD48 /* DatabaseManager.swift in Sources */,
+				BFE2A3FE2B2DC6EA00EABD48 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
