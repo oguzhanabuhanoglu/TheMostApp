@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 struct SettingsCellModel {
     let title : String
@@ -44,13 +45,78 @@ final class SettingsViewController: UIViewController, UITableViewDelegate, UITab
     
     
     func configureModels() {
-        let section = [SettingsCellModel(title: "Log Out")  { [weak self] in
-            self?.didTapLogOutButton()
+       
+        data.append([
+            SettingsCellModel(title: "Edit Profile"){ [weak self] in
+                self?.didTapEditProfile()
+            },
             
-        }]
-        data.append(section)
+            SettingsCellModel(title: "Invite Friends"){ [weak self] in
+                self?.didTapInviteFriends()
+            },
+            
+            SettingsCellModel(title: "Notifications"){ [weak self] in
+                self?.didTapNotifications()
+            }
+            
+        ])
+        
+        data.append([
+            SettingsCellModel(title: "Privacy Policy") { [weak self] in
+                self?.openURL(type: .Privacy)
+            },
+            
+            SettingsCellModel(title: "Terms Of Service") { [weak self] in
+                self?.openURL(type: .Terms)
+            },
+            
+            SettingsCellModel(title: "Help & Feedback") { [weak self] in
+                self?.openURL(type: .Help)
+            }
+        ])
+        
+        data.append([
+            SettingsCellModel(title: "Log Out")  { [weak self] in
+            self?.didTapLogOutButton()
+            }
+        ])
+            
     }
     
+    private enum SettingsUrlType{
+        case Terms, Privacy, Help
+    }
+    
+    private func openURL(type: SettingsUrlType){
+        var urlString : String = ""
+        switch type {
+        case .Terms: urlString = ""
+        case .Privacy: urlString = ""
+        case .Help: urlString = ""
+        }
+        
+        guard let url = URL(string: urlString) else{
+            return
+        }
+        
+        let vc = SFSafariViewController(url: url)
+        present(vc, animated: true)
+    }
+    
+    private func didTapEditProfile(){
+        let vc = EditProfileViewController()
+        vc.title = "Edit Profile"
+        let navVC = UINavigationController(rootViewController: vc)
+        present(navVC ,animated: true)
+    }
+    
+    private func didTapInviteFriends(){
+        
+    }
+    
+    private func didTapNotifications(){
+        
+    }
     
     private func didTapLogOutButton() {
         
@@ -93,6 +159,7 @@ final class SettingsViewController: UIViewController, UITableViewDelegate, UITab
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = data[indexPath.section][indexPath.row].title
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
     
