@@ -30,6 +30,7 @@
 		BFE2A3FC2B2CEE1700EABD48 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BFE2A3FB2B2CEE1700EABD48 /* GoogleService-Info.plist */; };
 		BFE2A3FE2B2DC6EA00EABD48 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE2A3FD2B2DC6EA00EABD48 /* SettingsViewController.swift */; };
 		BFE2A4002B30688100EABD48 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE2A3FF2B30688100EABD48 /* EditProfileViewController.swift */; };
+		BFE2A4032B30CF2F00EABD48 /* EditProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE2A4022B30CF2F00EABD48 /* EditProfileTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,7 @@
 		BFE2A3FB2B2CEE1700EABD48 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BFE2A3FD2B2DC6EA00EABD48 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		BFE2A3FF2B30688100EABD48 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		BFE2A4022B30CF2F00EABD48 /* EditProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewCell.swift; sourceTree = "<group>"; };
 		C1705B4470319B986A6C0D60 /* Pods_theMost.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_theMost.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -161,6 +163,7 @@
 		BFE2A3B22B2A57F700EABD48 /* theMost */ = {
 			isa = PBXGroup;
 			children = (
+				BFE2A4012B30CF0100EABD48 /* Cells */,
 				BFE2A3E82B2A62E900EABD48 /* General */,
 				BFE2A3E72B2A62E200EABD48 /* Models */,
 				BFE2A3E52B2A62C300EABD48 /* Firebase */,
@@ -246,6 +249,14 @@
 				BFE2A3FF2B30688100EABD48 /* EditProfileViewController.swift */,
 			);
 			path = MainPages;
+			sourceTree = "<group>";
+		};
+		BFE2A4012B30CF0100EABD48 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				BFE2A4022B30CF2F00EABD48 /* EditProfileTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -497,6 +508,7 @@
 				BFE2A3EE2B2A63F700EABD48 /* ProfileViewController.swift in Sources */,
 				BFE2A3EC2B2A63EA00EABD48 /* SearchViewController.swift in Sources */,
 				BFE2A3F82B2A657A00EABD48 /* StorageManager.swift in Sources */,
+				BFE2A4032B30CF2F00EABD48 /* EditProfileTableViewCell.swift in Sources */,
 				BFE2A3B62B2A57F700EABD48 /* SceneDelegate.swift in Sources */,
 				BFE2A3FA2B2CD6BC00EABD48 /* File.swift in Sources */,
 				BFE2A3F62B2A656D00EABD48 /* DatabaseManager.swift in Sources */,
