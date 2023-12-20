@@ -66,6 +66,7 @@ public class AuthManager {
         }
     }
     
+    
     public func logOut(completion : (Bool) -> Void) {
         
         do {
