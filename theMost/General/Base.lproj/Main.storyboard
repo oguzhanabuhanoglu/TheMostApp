@@ -33,7 +33,7 @@
         <scene sceneID="tR6-2m-DEi">
             <objects>
                 <navigationController id="NqY-qa-tB3" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="magnifyingglass" catalog="system" id="K95-CO-9Pe"/>
+                    <tabBarItem key="tabBarItem" title="" image="house" catalog="system" id="K95-CO-9Pe"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="lwv-o3-vop">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -67,7 +67,7 @@
         <scene sceneID="nAS-1P-Dqy">
             <objects>
                 <navigationController id="rxy-eF-7Js" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="house" catalog="system" id="Dyn-sI-CYV"/>
+                    <tabBarItem key="tabBarItem" title="" image="person.2" catalog="system" id="Dyn-sI-CYV"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="r0z-ss-loX">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -80,10 +80,10 @@
             </objects>
             <point key="canvasLocation" x="-1013" y="304"/>
         </scene>
-        <!--Feed View Controller-->
+        <!--Search View Controller-->
         <scene sceneID="xfe-A5-NVH">
             <objects>
-                <viewController id="Eem-RP-4OT" customClass="FeedViewController" customModule="theMost" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Eem-RP-4OT" customClass="SearchViewController" customModule="theMost" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eqp-6T-T8G">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -112,10 +112,10 @@
             </objects>
             <point key="canvasLocation" x="658.77862595419845" y="1014.7887323943662"/>
         </scene>
-        <!--Search View Controller-->
+        <!--Feed View Controller-->
         <scene sceneID="mEh-Nl-HLr">
             <objects>
-                <viewController id="AtW-oX-R09" customClass="SearchViewController" customModule="theMost" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="AtW-oX-R09" customClass="FeedViewController" customModule="theMost" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="czP-7r-fos">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -131,8 +131,8 @@
     </scenes>
     <resources>
         <image name="house" catalog="system" width="128" height="104"/>
-        <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="person" catalog="system" width="128" height="121"/>
+        <image name="person.2" catalog="system" width="128" height="87"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
