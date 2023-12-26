@@ -35,6 +35,4 @@ public class StorageManager {
     
 }
 
-public struct UserPosts {
-    
-}
+

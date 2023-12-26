@@ -12,6 +12,7 @@ pod 'FirebaseAuth'
 pod 'FirebaseStorage'
 pod 'FirebaseCore'
 pod 'FirebaseDatabase'
+pod 'SDWebImage', '~> 5.0'
 
   target 'theMostTests' do
     inherit! :search_paths

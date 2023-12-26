@@ -14,16 +14,18 @@ final class ProfileCollectionViewController: UIViewController, UICollectionViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         let widht = view.frame.size.width
-        let height = view.frame.size.height
 
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        layout.itemSize = CGSize(width: widht / 3, height: widht / 3)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 1, bottom: 0, right: 1)
+        let size = (widht - 4) / 3
+        layout.minimumLineSpacing = 1
+        layout.minimumInteritemSpacing = 1
+        layout.itemSize = CGSize(width: size, height: size)
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView?.delegate = self
         collectionView?.dataSource = self
-        collectionView?.backgroundColor = .red
+        collectionView?.backgroundColor = .systemBackground
         collectionView?.register(ProfileCollectionViewCell.self, forCellWithReuseIdentifier: ProfileCollectionViewCell.identifier)
         guard collectionView == collectionView else {
             return
@@ -37,12 +39,12 @@ final class ProfileCollectionViewController: UIViewController, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 30
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileCollectionViewCell.identifier, for: indexPath) as! ProfileCollectionViewCell
-        cell.backgroundColor = .blue
+        cell.configure(debug: "sisifos")
         return cell
     }
     

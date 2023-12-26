@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     //HEADER VİEW
     private let profileHeaderView : UIView = {
@@ -25,6 +25,7 @@ class ProfileViewController: UIViewController {
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
+    
     
     private let nameLabel : UILabel = {
         let label = UILabel()
@@ -77,6 +78,8 @@ class ProfileViewController: UIViewController {
         return label
     }()
     
+    private var preCollectionView : UICollectionView?
+    
     private let seeAllButton : UIButton = {
         let button = UIButton()
         button.setTitle("See All", for: UIControl.State.normal)
@@ -90,10 +93,6 @@ class ProfileViewController: UIViewController {
         return button
     }()
     
-    /*private let profileCollectionView : UICollectionView = {
-        let collectionView = UICollectionView()
-        return collectionView
-    }()*/
     
     //PİN VİEW
     private let pinsTittleLabel : UILabel = {
@@ -166,12 +165,33 @@ class ProfileViewController: UIViewController {
         
         profileFooterView.addSubview(seeAllButton)
         
+        let widhtF = profileFooterView.frame.size.width
+        let size = (widhtF - 4) / 3
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
+        layout.minimumLineSpacing = 1
+        layout.minimumInteritemSpacing = 1
+        layout.itemSize = CGSize(width: size, height: size)
+        preCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        preCollectionView?.delegate = self
+        preCollectionView?.dataSource = self
+        preCollectionView?.backgroundColor = .purple
+        preCollectionView?.register(ProfilePreCollectionViewCell.self, forCellWithReuseIdentifier: ProfilePreCollectionViewCell.identifier)
+        
+        guard preCollectionView == preCollectionView else{
+            return
+        }
+        profileFooterView.addSubview(preCollectionView!)
+        
         
     }
     
     
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
         let widht = view.frame.size.width
         let height = view.frame.size.height
         
@@ -184,9 +204,7 @@ class ProfileViewController: UIViewController {
         
         profileImageView.frame = CGRect(x: widhtH * 0.5 - (size) / 2, y: heightH * 0.54 - (size) / 2, width: size, height: size)
         profileImageView.layer.cornerRadius = size / 2
-        
         nameLabel.frame = CGRect(x: widhtH * 0.5 - (widhtH * 0.9) / 2, y: heightH * 0.81 - (heightH * 0.13) / 2, width: widhtH * 0.9, height: heightH * 0.13)
-        
         usernameLabel.frame = CGRect(x: widhtH * 0.5 - (widhtH * 0.9) / 2, y: heightH * 0.92 - (heightH * 0.07) / 2, width: widhtH * 0.9, height: heightH * 0.07)
         
         
@@ -198,7 +216,6 @@ class ProfileViewController: UIViewController {
         pinImageView3.frame = CGRect(x: 45 + 2 * ((widht / 3) - 20), y: height * 0.5 - (height / 4) / 2, width: (widht / 3) - 20, height: height / 5.5)
     
         
-        
         //FOOTER AND FOOTER İTEMS
         profileFooterView.frame = CGRect(x: 5, y: height - (height / 2.7) - 20 , width: widht - 10, height: height / 2.7)
         
@@ -207,12 +224,8 @@ class ProfileViewController: UIViewController {
         
         footerTittle.frame = CGRect(x: 5, y: height / 1.75, width: widht * 0.5, height: height * 0.03)
         collectionPrivacyLabel.frame = CGRect(x: widht - (widht * 0.4) - 13, y: height / 1.75, width: widht * 0.4, height: height * 0.03)
-        
         seeAllButton.frame = CGRect(x: widhtF * 0.5 - (widhtF * 0.2) / 2, y: heightF * 0.73 - (heightF * 0.1) / 2, width: widhtF * 0.2, height: heightF * 0.1)
-        
-        
-        
-        
+        preCollectionView?.frame = CGRect(x: 0, y: 0 , width: widhtF, height: heightF * 0.65)
         
         
     }
@@ -225,6 +238,7 @@ class ProfileViewController: UIViewController {
         
     }
     
+    //buttons
     @objc func didTapSettingsButton(){
         let settingsVC = SettingsViewController()
         settingsVC.title = "Settings"
@@ -237,6 +251,23 @@ class ProfileViewController: UIViewController {
         navigationController?.pushViewController(profileCollectionVC, animated: true)
     }
 
+    
+    //collection views
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfilePreCollectionViewCell.identifier, for: indexPath) as! ProfilePreCollectionViewCell
+        //cell.configure(debug: "sisifos")
+        cell.backgroundColor = .blue
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+    }
+    
  
 
 }

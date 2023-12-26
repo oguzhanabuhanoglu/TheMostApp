@@ -33,7 +33,6 @@ final class SettingsViewController: UIViewController, UITableViewDelegate, UITab
         tableView.delegate = self
         tableView.dataSource = self
         
-        
         configureModels()
         
     }
@@ -161,6 +160,7 @@ final class SettingsViewController: UIViewController, UITableViewDelegate, UITab
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = data[indexPath.section][indexPath.row].title
         cell.accessoryType = .disclosureIndicator
+        cell.selectionStyle = .none
         return cell
     }
     
