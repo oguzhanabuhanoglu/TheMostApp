@@ -23,6 +23,8 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         view.backgroundColor = .systemBackground
         navigationItem.title = "The Photo"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "heart"), style: UIBarButtonItem.Style.done, target: self, action: #selector(didTapNotificationsButton))
+        navigationItem.rightBarButtonItem?.tintColor = .label
         
         view.addSubview(tableView)
         tableView.delegate = self
@@ -52,12 +54,18 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    @objc func didTapNotificationsButton() {
+        let vc = NotificationsViewController()
+        vc.title = "Notifications"
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     private func createTableHeader() -> UIView {
         let widht = view.frame.size.width
         let height = view.frame.size.height
         
-        let header = UIView(frame: CGRect(x: 0, y: 0, width: widht, height: height / 12).integral)
-        header.backgroundColor = .secondarySystemFill
+        let header = UIView(frame: CGRect(x: 0, y: 0, width: widht, height: height / 18).integral)
+        header.backgroundColor = .systemBackground
         let widhtH = header.frame.size.width
         let heightH = header.frame.size.height
         

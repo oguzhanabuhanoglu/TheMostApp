@@ -17,7 +17,7 @@ public class StorageManager {
         case failedToDownload
     }
     
-    public func uploadUserPost(model: UserPosts, completion: @escaping (Result<URL, Error>) -> Void) {
+    public func uploadUserPost(model: UserPost, completion: @escaping (Result<URL, Error>) -> Void) {
         
     }
     

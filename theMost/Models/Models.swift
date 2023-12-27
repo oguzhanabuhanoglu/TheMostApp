@@ -7,22 +7,28 @@
 
 import Foundation
 
+//USER
 public struct User{
+    let profilePhoto : URL
     let name : String
     let username : String
     let bio : String
     let birthDate : Date
-    let gender : [Gender]
+    let gender : Gender
     let joinDate : Date
 }
 
 enum Gender {
-    case male, female, other
+    case male
+    case female
+    case other
 }
 
-public struct UserPosts {
+//POST
+public struct UserPost {
     let identifier : String
     let postUrl : URL
+    let dailyChallange : String
     let thumbnailImage : URL
     let comments : [PostComments]
     let likeCount : [PostLikes]

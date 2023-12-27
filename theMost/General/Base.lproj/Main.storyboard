@@ -67,7 +67,7 @@
         <scene sceneID="nAS-1P-Dqy">
             <objects>
                 <navigationController id="rxy-eF-7Js" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="person.2" catalog="system" id="Dyn-sI-CYV"/>
+                    <tabBarItem key="tabBarItem" title="" image="magnifyingglass" catalog="system" id="Dyn-sI-CYV"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="r0z-ss-loX">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -131,8 +131,8 @@
     </scenes>
     <resources>
         <image name="house" catalog="system" width="128" height="104"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="person" catalog="system" width="128" height="121"/>
-        <image name="person.2" catalog="system" width="128" height="87"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
