@@ -8,7 +8,7 @@
 import UIKit
 
 protocol FriendRequestEventTableViewCellDelegate : AnyObject {
-    func didTapAcceptButton(model : UserNotification)
+    func didTapAcceptButton(model: UserNotification)
     func didTapDeclineButton()
 }
 
@@ -17,6 +17,8 @@ class FriendRequestEventTableViewCell: UITableViewCell {
     static let identifier = "AddFriendEventTableViewCell"
     
     weak var delegate : FriendRequestEventTableViewCellDelegate?
+    
+    private var model : UserNotification?
     
     private let profileImage : UIImageView = {
         let imageView = UIImageView()
@@ -29,16 +31,16 @@ class FriendRequestEventTableViewCell: UITableViewCell {
     private let label : UILabel = {
         let label = UILabel()
         label.textColor = .label
-        label.backgroundColor = .label
         label.numberOfLines = 2
-        label.font = UIFont(name: "Helvelica", size: 14)
+        label.font = UIFont(name: "Helvetica", size: 15)
         label.text = "Joe sana arkadaşlık istedi gönderdi"
         return label
     }()
     
     private let acceptButton : UIButton = {
         let button = UIButton()
-        button.setTitle("accept", for: UIControl.State.normal)
+        button.setBackgroundImage(UIImage(systemName: "checkmark.circle"), for: UIControl.State.normal)
+        //button.setTitle("accept", for: UIControl.State.normal)
         button.tintColor = .label
         return button
     }()
@@ -52,6 +54,14 @@ class FriendRequestEventTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        contentView.clipsToBounds = true
+        addSubview(profileImage)
+        addSubview(label)
+        addSubview(declineButton)
+        addSubview(acceptButton)
+        
+        declineButton.addTarget(self, action: #selector(didTapDeclineButton), for: UIControl.Event.touchUpInside)
+        acceptButton.addTarget(self, action: #selector(didTapAcceptButton), for: UIControl.Event.touchUpInside)
     }
     
     required init?(coder: NSCoder) {
@@ -68,13 +78,16 @@ class FriendRequestEventTableViewCell: UITableViewCell {
         profileImage.layer.cornerRadius = size / 2
         
         let size2 = height - 4
-        label.frame = CGRect(x: widht * 0.5  - (widht * 0.7) / 2, y: 2, width: widht * 0.5, height: size2)
+        label.frame = CGRect(x: widht * 0.52  - (widht * 0.7) / 2, y: 2, width: widht * 0.5, height: size2)
         
-        declineButton.frame = CGRect(x: widht - size2, y: 2, width: size2, height: size2)
+        let size3 = height / 2
+        declineButton.frame = CGRect(x: widht - size3 - 12, y: (height - size3) / 2, width: size3, height: size3)
         
-        //acceptButton.frame = CGRect(x: <#T##CGFloat#>, y: <#T##CGFloat#>, width: <#T##CGFloat#>, height: <#T##CGFloat#>)
-        
-        
+        acceptButton.frame = CGRect(x: widht - (size3 * 2) - 30, y: (height - size3) / 2, width: size3, height: size3)
+        //acceptButton.frame = CGRect(x: widht * 0.68, y: height / 2 - (height * 0.3), width: widht * 0.2, height: height * 0.6)
+        /*acceptButton.layer.borderWidth = 1
+        acceptButton.layer.borderColor = UIColor.white.cgColor
+        acceptButton.layer.cornerRadius = 20*/
         
     }
     
@@ -84,7 +97,31 @@ class FriendRequestEventTableViewCell: UITableViewCell {
     }
     
 
-    public func configure(with model : String) {
+    public func configure(with model : UserNotification) {
+        self.model = model
+        
+        switch model.type {
+        case .like(_):
+            break
+        case .friendRequest:
+            //configure buttons
+            break
+        }
+    }
+    
+    
+    @objc func didTapDeclineButton() {
+        guard let model = model else {
+            return
+        }
+        delegate?.didTapDeclineButton()
+    }
+    
+    @objc func didTapAcceptButton() {
+        guard let model = model else {
+            return
+        }
+        delegate?.didTapAcceptButton(model: model)
         
     }
     

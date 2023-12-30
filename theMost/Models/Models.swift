@@ -16,6 +16,7 @@ public struct User{
     let birthDate : Date
     let gender : Gender
     let joinDate : Date
+    let friendsList : [User]
 }
 
 enum Gender {

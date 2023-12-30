@@ -77,9 +77,9 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
     private func fetchNotifications(){
         for x in 0...40{
             let post = UserPost(identifier: "",
-                                postUrl: URL(string: "https://www.gooogle.com/")!,
+                                postUrl: URL(string: "https://www.google.com/")!,
                                 dailyChallange: "",
-                                thumbnailImage: URL(string: "https://www.gooogle.com/")!,
+                                thumbnailImage: URL(string: "https://www.google.com/")!,
                                 comments: [],
                                 likeCount: [],
                                 createdDate: Date())
@@ -92,7 +92,8 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
                                                     bio: "",
                                                     birthDate: Date(),
                                                     gender: .male,
-                                                    joinDate: Date()))
+                                                    joinDate: Date(),
+                                                    friendsList: []))
             
             models.append(model)
         }
@@ -123,7 +124,7 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return view.frame.size.height * 0.06
+        return view.frame.size.height * 0.07
     }
     
 
@@ -140,7 +141,7 @@ extension NotificationsViewController: LikeEventTableViewCellDelegate {
 }
 
 extension NotificationsViewController: FriendRequestEventTableViewCellDelegate {
-    func didTapAcceptButton() {
+    func didTapAcceptButton(model: UserNotification) {
         print("tapped")
         //update database
     }

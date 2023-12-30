@@ -74,7 +74,9 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     @objc func didTapFriendsButton() {
-        
+        let vc = FriendsListViewController()
+        vc.title = "Friends"
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     

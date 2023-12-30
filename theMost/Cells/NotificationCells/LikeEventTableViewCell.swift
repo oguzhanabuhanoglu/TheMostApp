@@ -32,7 +32,7 @@ class LikeEventTableViewCell: UITableViewCell {
     private let label : UILabel = {
         let label = UILabel()
         label.textColor = .label
-        label.font = UIFont(name: "Helvetica", size: 14)
+        label.font = UIFont(name: "Helvetica", size: 15)
         label.numberOfLines = 2
         label.text = "Joe liked your post"
         return label
@@ -70,7 +70,7 @@ class LikeEventTableViewCell: UITableViewCell {
         let size2 = height - 4
         postButton.frame = CGRect(x: widht - size2, y: 2, width: size2, height: size2)
         
-        label.frame = CGRect(x: widht * 0.5  - (widht * 0.7) / 2, y: 2, width: widht * 0.6, height: size2)
+        label.frame = CGRect(x: widht * 0.52  - (widht * 0.7) / 2, y: 2, width: widht * 0.6, height: size2)
         
     }
     
@@ -81,6 +81,7 @@ class LikeEventTableViewCell: UITableViewCell {
     }
     
     @objc func didTapPostButton() {
+        //fonksiyonu notificationViewController içerisinde uygulayacağımız için  protocol olarak aldık ve any object yaptık ki bu fonksiyona başka sınıf içerisinden ulaşabilelim.protocolo  notificationVC ye comfrom ettikten sonra onksiyon içeriğini extensiyon olarak orada yazacağız.
         guard let model = model else {
             return
         }
@@ -89,6 +90,7 @@ class LikeEventTableViewCell: UITableViewCell {
     
 
     public func configure(with model : UserNotification) {
+        //bu cell içinde olusturduğumuz modeli configure func parametresi olan modela assign ettik.Burada bilgileri aldıktan sonra NotificationViewControllerda tanımladığımız bu cell fonksiyonları altında configure fonksiyonunu çağıracağız.Bilgileri burada bu modele atadığımız için oraya sadece onları getireğiz.
         self.model = model
         
         switch model.type {
