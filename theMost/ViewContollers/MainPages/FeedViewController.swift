@@ -13,6 +13,9 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     private let tableView : UITableView = {
         let tableView = UITableView()
         tableView.register(FeedPostTableViewCell.self, forCellReuseIdentifier: FeedPostTableViewCell.identifier)
+        tableView.register(FeedPostHeaderTableViewCell.self, forCellReuseIdentifier: FeedPostHeaderTableViewCell.identifier)
+        tableView.register(FeedPostActionTableViewCell.self, forCellReuseIdentifier: FeedPostActionTableViewCell.identifier)
+        tableView.register(FeedPostReactionsTableViewCell.self, forCellReuseIdentifier: FeedPostReactionsTableViewCell.identifier)
         return tableView
     }()
     
@@ -100,7 +103,9 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: FeedPostTableViewCell.identifier, for: indexPath) as! FeedPostTableViewCell
+        /*let cell = tableView.dequeueReusableCell(withIdentifier: FeedPostTableViewCell.identifier, for: indexPath) as! FeedPostTableViewCell
+        return cell*/
+        let cell = UITableViewCell()
         return cell
     }
     

@@ -76,24 +76,27 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
     
     private func fetchNotifications(){
         for x in 0...40{
+            let user = User(profilePhoto: URL(string: "https://www.gooogle.com/")!,
+                            name: "",
+                            username: "Joe",
+                            bio: "",
+                            birthDate: Date(),
+                            gender: .male,
+                            joinDate: Date(),
+                            friendsList: [])
+            
             let post = UserPost(identifier: "",
                                 postUrl: URL(string: "https://www.google.com/")!,
                                 dailyChallange: "",
                                 thumbnailImage: URL(string: "https://www.google.com/")!,
                                 comments: [],
                                 likeCount: [],
-                                createdDate: Date())
+                                createdDate: Date(),
+                                owner: user)
             
             let model = UserNotification(type: x % 2 == 0 ? .like(post: post) : .friendRequest,
                                          text: "Hello world",
-                                         user: User(profilePhoto: URL(string: "https://www.gooogle.com/")!,
-                                                    name: "",
-                                                    username: "Joe",
-                                                    bio: "",
-                                                    birthDate: Date(),
-                                                    gender: .male,
-                                                    joinDate: Date(),
-                                                    friendsList: []))
+                                         user: user)
             
             models.append(model)
         }
@@ -137,6 +140,14 @@ extension NotificationsViewController: LikeEventTableViewCellDelegate {
     func didTapRelatedPostButton(model: UserNotification) {
         print("tapped")
         //go to post vc
+        switch model.type {
+        case .like(let post):
+            let vc = PostViewController(model: post)
+            navigationController?.pushViewController(vc, animated: true)
+        case .friendRequest:
+            fatalError("Dev issue: Should never get called")
+        }
+        
     }
 }
 

@@ -23,11 +23,11 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         configureNavigationBar()
             
         let widht = view.frame.size.width
-        let size = (widht - 4) / 3
+        let size = (widht - 10) / 3
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 1, bottom: 0, right: 1)
-        layout.minimumLineSpacing = 1
-        layout.minimumInteritemSpacing = 1
+        layout.minimumLineSpacing = 3
+        layout.minimumInteritemSpacing = 3
         layout.itemSize = CGSize(width: size, height: size)
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView?.delegate = self
@@ -89,7 +89,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         //let model = userPosts[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileCollectionViewCell.identifier, for: indexPath) as! ProfileCollectionViewCell
-        cell.configure(debug: "wp")
+        cell.configure(debug: "sisifos")
         //cell.configure(with: model)
         return cell
     }

@@ -50,7 +50,7 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
         label.numberOfLines = 2
         label.textColor = .label
         label.font = UIFont(name: "Helvetica-Bold", size: 13)
-        label.text = "ME:"
+        label.text = "Library name w/ 1 word"
         return label
     }()
     
@@ -78,7 +78,7 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
         
         let widht = frame.size.width
         let height = frame.size.height
-        let size = frame.height / 1.7
+        let size = frame.height / 1.8
                 
         profileImageView.frame = CGRect(x: widht * 0.5 - (size) / 2, y: height * 0.3 - (size) / 2, width: size, height: size)
         profileImageView.layer.cornerRadius = size / 2

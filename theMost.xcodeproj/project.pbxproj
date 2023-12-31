@@ -286,12 +286,12 @@
 				BFE2A4022B30CF2F00EABD48 /* EditProfileTableViewCell.swift */,
 				BFE2A4202B3C7B1000EABD48 /* NotificationCells */,
 				BFE2A4152B376BD100EABD48 /* ProfileCells */,
-				BFE2A4082B3716ED00EABD48 /* FeedCells */,
+				BFE2A4082B3716ED00EABD48 /* Feed & Post Cells */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		BFE2A4082B3716ED00EABD48 /* FeedCells */ = {
+		BFE2A4082B3716ED00EABD48 /* Feed & Post Cells */ = {
 			isa = PBXGroup;
 			children = (
 				BFE2A4092B37171200EABD48 /* FeedPostTableViewCell.swift */,
@@ -299,7 +299,7 @@
 				BFE2A40D2B37174200EABD48 /* FeedPostActionTableViewCell.swift */,
 				BFE2A40F2B37176700EABD48 /* FeedPostReactionsTableViewCell.swift */,
 			);
-			path = FeedCells;
+			path = "Feed & Post Cells";
 			sourceTree = "<group>";
 		};
 		BFE2A4152B376BD100EABD48 /* ProfileCells */ = {

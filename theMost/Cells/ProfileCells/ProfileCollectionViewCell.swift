@@ -32,6 +32,7 @@ class ProfileCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        contentView.layer.cornerRadius = 30
         prePhotoImageView.frame = contentView.bounds
     }
     

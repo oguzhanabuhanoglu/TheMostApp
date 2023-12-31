@@ -34,6 +34,7 @@ public struct UserPost {
     let comments : [PostComments]
     let likeCount : [PostLikes]
     let createdDate : Date
+    let owner : User
 }
 
 public struct PostLikes {
