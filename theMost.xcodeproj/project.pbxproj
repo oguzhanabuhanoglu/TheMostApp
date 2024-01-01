@@ -294,8 +294,8 @@
 		BFE2A4082B3716ED00EABD48 /* Feed & Post Cells */ = {
 			isa = PBXGroup;
 			children = (
-				BFE2A4092B37171200EABD48 /* FeedPostTableViewCell.swift */,
 				BFE2A40B2B37173400EABD48 /* FeedPostHeaderTableViewCell.swift */,
+				BFE2A4092B37171200EABD48 /* FeedPostTableViewCell.swift */,
 				BFE2A40D2B37174200EABD48 /* FeedPostActionTableViewCell.swift */,
 				BFE2A40F2B37176700EABD48 /* FeedPostReactionsTableViewCell.swift */,
 			);

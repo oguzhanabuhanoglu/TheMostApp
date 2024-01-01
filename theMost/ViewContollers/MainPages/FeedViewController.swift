@@ -8,7 +8,16 @@
 import UIKit
 import FirebaseAuth
 
+struct FeedRenderViewModel {
+    let header: PostRenderViewModel
+    let post: PostRenderViewModel
+    let actions: PostRenderViewModel
+    let comments: PostRenderViewModel
+}
+
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    private var feedRenderModel = [FeedRenderViewModel]()
     
     private let tableView : UITableView = {
         let tableView = UITableView()
@@ -19,7 +28,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         return tableView
     }()
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -34,6 +42,46 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.dataSource = self
         
         tableView.tableHeaderView = createTableHeader()
+        
+        createMockData()
+    }
+    
+    private func createMockData() {
+        let user = User(profilePhoto: URL(string: "https://www.gooogle.com/")!,
+                        name: "",
+                        username: "Joe",
+                        bio: "",
+                        birthDate: Date(),
+                        gender: .male,
+                        joinDate: Date(),
+                        friendsList: [])
+        
+        let post = UserPost(identifier: "",
+                            postUrl: URL(string: "https://www.google.com/")!,
+                            dailyChallange: "",
+                            thumbnailImage: URL(string: "https://www.google.com/")!,
+                            comments: [],
+                            likeCount: [],
+                            createdDate: Date(),
+                            owner: user)
+        
+        var comments = [PostComments]()
+        for x in 0..<2 {
+            comments.append(PostComments(identifier: "\(x)",
+                                         username: "jenny",
+                                         text: "great post",
+                                         createdDate: Date(),
+                                         likes: []))
+        }
+        
+        for x in 0..<5{
+            let viewModel = FeedRenderViewModel(header: PostRenderViewModel(renderSection: .header(provider: user)),
+                                                post: PostRenderViewModel(renderSection: .photo(provider: post)),
+                                                actions: PostRenderViewModel(renderSection: .actions(provider: "")),
+                                                comments: PostRenderViewModel(renderSection: .comments(comments)))
+            
+            feedRenderModel.append(viewModel)
+        }
         
     }
     
@@ -102,20 +150,133 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         //share post vc
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        /*let cell = tableView.dequeueReusableCell(withIdentifier: FeedPostTableViewCell.identifier, for: indexPath) as! FeedPostTableViewCell
-        return cell*/
-        let cell = UITableViewCell()
-        return cell
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return feedRenderModel.count * 4
     }
+   
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 30
+        let x = section
+        let model : FeedRenderViewModel
+        
+        if x == 0 {
+            model = feedRenderModel[0]
+        }else{
+            let position = x % 4 == 0 ? x/4 : ((x - (x % 4)) / 4)
+            model = feedRenderModel[position]
+        }
+        
+        let subSection = x % 4
+        
+        if subSection == 0 {
+            //header
+            return 1
+            
+        }else if subSection == 1{
+            //post
+            return 1
+            
+        }else if subSection == 2{
+            //actions
+            return 1
+            
+        }else if subSection == 3{
+            //comments
+            let commentsModel = model.comments
+            switch commentsModel.renderSection {
+            case .comments(let comments):
+                return comments.count > 2 ? 2 : comments.count
+            case .header, .actions, .photo : return 0
+            }
+        }
+        
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let x = indexPath.section
+        let model : FeedRenderViewModel
+        
+        if x == 0 {
+            model = feedRenderModel[0]
+        }else{
+            let position = x % 4 == 0 ? x/4 : ((x - (x % 4)) / 4)
+            model = feedRenderModel[position]
+        }
+        
+        let subSection = x % 4
+        
+        if subSection == 0 {
+            //header
+            let headerModel = model.header
+            switch headerModel.renderSection {
+            case .header(let user):
+                let cell = tableView.dequeueReusableCell(withIdentifier: FeedPostHeaderTableViewCell.identifier, for: indexPath) as! FeedPostHeaderTableViewCell
+                
+                return cell
+            case .actions, .comments, .photo : return UITableViewCell()
+            }
+            
+        }else if subSection == 1{
+            //post
+            let postModel = model.post
+            switch postModel.renderSection {
+            case .photo(let post):
+                let cell = tableView.dequeueReusableCell(withIdentifier: FeedPostTableViewCell.identifier, for: indexPath) as! FeedPostTableViewCell
+                
+                return cell
+            case .actions, .comments, .header : return UITableViewCell()
+            }
+            
+        }else if subSection == 2{
+            //actions
+            let actionsModel = model.actions
+            switch actionsModel.renderSection {
+            case .actions(let provider):
+                let cell = tableView.dequeueReusableCell(withIdentifier: FeedPostActionTableViewCell.identifier, for: indexPath) as! FeedPostActionTableViewCell
+                
+                return cell
+            case .header, .comments, .photo : return UITableViewCell()
+            }
+            
+        }else if subSection == 3{
+            //comments
+            let commentsModel = model.comments
+            switch commentsModel.renderSection {
+            case .comments(let comments):
+                let cell = tableView.dequeueReusableCell(withIdentifier: FeedPostReactionsTableViewCell.identifier, for: indexPath) as! FeedPostReactionsTableViewCell
+                
+                return cell
+            case .header, .actions, .photo : return UITableViewCell()
+            }
+        }
+        
+        return UITableViewCell()
+
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return view.frame.size.height * 0.80
+        let subSection = indexPath.section % 4
+        if subSection == 0 {
+            return 70
+        }else if subSection == 1 {
+            return tableView.frame.size.width
+        }else if subSection == 2 {
+            return 60
+        }else if subSection == 3 {
+            return 50
+        }
+        return 0
     }
 
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        let subSection = section % 4
+        return subSection == 3 ? 60 : 0
+    }
 }
 

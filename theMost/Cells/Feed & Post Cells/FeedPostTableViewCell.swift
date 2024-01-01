@@ -13,7 +13,7 @@ class FeedPostTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = .green
+        contentView.backgroundColor = .tertiaryLabel
     }
     
     required init?(coder: NSCoder) {

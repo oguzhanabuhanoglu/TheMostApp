@@ -7,6 +7,7 @@
 
 import UIKit
 
+//states of a rendered cell
 enum PostRenderSections {
     case header(provider: User)
     case photo(provider: UserPost) // post
@@ -14,6 +15,7 @@ enum PostRenderSections {
     case comments([PostComments])
 }
 
+//model of rendered post
 struct PostRenderViewModel {
     let renderSection: PostRenderSections
 }
