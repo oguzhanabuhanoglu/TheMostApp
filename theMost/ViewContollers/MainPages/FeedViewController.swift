@@ -115,7 +115,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         let widht = view.frame.size.width
         let height = view.frame.size.height
         
-        let header = UIView(frame: CGRect(x: 0, y: 0, width: widht, height: height / 18).integral)
+        let header = UIView(frame: CGRect(x: 0, y: 0, width: widht, height: height / 17).integral)
         header.backgroundColor = .systemBackground
         let widhtH = header.frame.size.width
         let heightH = header.frame.size.height
@@ -133,7 +133,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         challangeLabel.font = UIFont(name: "Helvetica", size: 18)
         header.addSubview(challangeLabel)
         
-        let cameraButton = UIButton(frame: CGRect(x: widhtH * 0.93 - (widhtH * 0.07) / 2 , y: heightH * 0.78 - (widhtH * 0.07) / 2, width: widhtH * 0.07, height: widhtH * 0.07))
+        let cameraButton = UIButton(frame: CGRect(x: widhtH * 0.93 - (widhtH * 0.07) / 2 , y: heightH * 0.72 - (widhtH * 0.07) / 2, width: widhtH * 0.07, height: widhtH * 0.07))
         cameraButton.setImage(UIImage(systemName: "camera.badge.clock"), for: UIControl.State.normal)
         cameraButton.backgroundColor = .systemBackground
         cameraButton.layer.cornerRadius = (widhtH * 0.07) / 2
@@ -212,7 +212,8 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             switch headerModel.renderSection {
             case .header(let user):
                 let cell = tableView.dequeueReusableCell(withIdentifier: FeedPostHeaderTableViewCell.identifier, for: indexPath) as! FeedPostHeaderTableViewCell
-                
+                cell.configure(with: user)
+                cell.delegate = self
                 return cell
             case .actions, .comments, .photo : return UITableViewCell()
             }
@@ -223,7 +224,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             switch postModel.renderSection {
             case .photo(let post):
                 let cell = tableView.dequeueReusableCell(withIdentifier: FeedPostTableViewCell.identifier, for: indexPath) as! FeedPostTableViewCell
-                
+                cell.configure(with: post)
                 return cell
             case .actions, .comments, .header : return UITableViewCell()
             }
@@ -258,11 +259,11 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let subSection = indexPath.section % 4
         if subSection == 0 {
-            return 70
+            return tableView.frame.size.height * 0.07
         }else if subSection == 1 {
             return tableView.frame.size.width
         }else if subSection == 2 {
-            return 60
+            return tableView.frame.size.height * 0.06
         }else if subSection == 3 {
             return 50
         }
@@ -280,3 +281,19 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 }
 
+
+extension FeedViewController : FeedPostHeaderTableViewCellDelegate {
+    func didTapMostButton() {
+        //action sheet
+        let actionSheet = UIAlertController(title: "Post Options", message: nil, preferredStyle: UIAlertController.Style.actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+        actionSheet.addAction(UIAlertAction(title: "Report Post", style: .destructive, handler: { [weak self] _ in
+            self?.reportPost()
+        }))
+        present(actionSheet, animated: true)
+    }
+    
+    func reportPost(){
+        
+    }
+}

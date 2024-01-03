@@ -103,11 +103,12 @@ class PostViewController: UIViewController, UITableViewDelegate, UITableViewData
         switch model.renderSection {
         case .header(provider: let user):
             let cell = tableView.dequeueReusableCell(withIdentifier: FeedPostHeaderTableViewCell.identifier, for: indexPath) as! FeedPostHeaderTableViewCell
-            
+            cell.configure(with: user)
+            cell.delegate = self
             return cell
         case .photo(provider: let post):
             let cell = tableView.dequeueReusableCell(withIdentifier: FeedPostTableViewCell.identifier, for: indexPath) as! FeedPostTableViewCell
-            
+            cell.configure(with: post)
             return cell
         case .actions(provider: let actions):
             let cell = tableView.dequeueReusableCell(withIdentifier: FeedPostActionTableViewCell.identifier, for: indexPath) as! FeedPostActionTableViewCell
@@ -135,4 +136,22 @@ class PostViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
 
+}
+
+
+extension PostViewController : FeedPostHeaderTableViewCellDelegate {
+    func didTapMostButton() {
+        //action sheet
+        let actionSheet = UIAlertController(title: "Post Options", message: nil, preferredStyle: UIAlertController.Style.actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+        actionSheet.addAction(UIAlertAction(title: "Report Post", style: .destructive, handler: { [weak self] _ in
+            self?.reportPost()
+        }))
+        present(actionSheet, animated: true)
+    }
+    
+    func reportPost(){
+        
+    }
+    
 }
