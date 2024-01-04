@@ -11,7 +11,7 @@ public class StorageManager {
     
     static let shared = StorageManager()
     
-    let bucket = Storage.storage().reference()
+    let storage = Storage.storage().reference()
     
     public enum storageErrorManager: Error {
         case failedToDownload
@@ -21,7 +21,16 @@ public class StorageManager {
         
     }
     
-    public func downloadImage(with reference: String, completion: @escaping ((Result<URL, storageErrorManager>) -> Void)) {
+    public func uploadProfilePicture(username: String, data: Data?, completion: @escaping (Bool) -> Void){
+        guard let data = data else {
+            return
+        }
+        storage.child("\(username)/profile_picture_png").putData(data, metadata: nil) { _, error in
+            completion(error == nil)
+        }
+    }
+    
+    /*public func downloadImage(with reference: String, completion: @escaping ((Result<URL, storageErrorManager>) -> Void)) {
         bucket.child(reference).downloadURL { url, error in
             guard let url = url else {
                 completion(.failure(.failedToDownload))
@@ -31,7 +40,7 @@ public class StorageManager {
 
         }
         
-    }
+    }*/
     
 }
 

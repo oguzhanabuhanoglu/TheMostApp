@@ -8,6 +8,13 @@
 import Foundation
 
 //USER
+//database değişikliğiyle ilgili bir durum
+
+public struct mockUser: Codable{
+    let username: String
+    let email: String
+}
+
 public struct User{
     let profilePhoto : URL
     let name : String

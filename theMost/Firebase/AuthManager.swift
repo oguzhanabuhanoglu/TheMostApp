@@ -6,41 +6,54 @@
 //
 
 import FirebaseAuth
+import UIKit
 
 public class AuthManager {
     
     static let shared = AuthManager()
     
+    let auth = Auth.auth()
+    enum AuthError : Error {
+        case newUserCreation
+    }
     
-    public func registerNewUser(username: String, email: String, password: String, completion : @escaping (Bool) -> Void) {
+    public var isSignedIn: Bool {
+        return auth.currentUser != nil
+    }
+    
+    public func signUp(username: String, email: String, password: String,profilePicture: Data?, completion : @escaping (Result<mockUser, Error>) -> Void) {
         //check if username is available
         //check if email is available
         DatabaseManager.shared.canCreateAccount(username: username, email: email) { canCreate in
             if canCreate{
                 //create account
                 //insert acccount to database
-                Auth.auth().createUser(withEmail: email, password: password) { result, error in
+                let newUser = mockUser(username: username, email: email)
+                auth.createUser(withEmail: email, password: password) { result, error in
                     guard error == nil, result != nil else {
                         // failed when creating user
-                        completion(false)
+                        completion(.failure(AuthError.newUserCreation))
                         return
                     }
                     //insert into database
                     
-                    DatabaseManager.shared.insertNewUser(with: email, username: username) { inserted in
-                        if inserted {
-                            completion(true)
-                            return
+                    DatabaseManager.shared.insertNewUser(newUser: newUser) { succes in
+                        if succes {
+                            StorageManager.shared.uploadProfilePicture(username: username, data: profilePicture) { uploadSucces in
+                                if uploadSucces {
+                                    completion(.success(newUser))
+                                }else{
+                                    completion(.failure(AuthError.newUserCreation))
+                                }
+                            }
                         }else{
-                            //failed when insert to database
-                            completion(false)
-                            return
+                            completion(.failure(AuthError.newUserCreation))
                         }
                     }
                 }
             } else {
                 
-                completion(false)
+                completion(.failure(AuthError.newUserCreation))
                 
             }
         }
@@ -48,16 +61,15 @@ public class AuthManager {
     
     
     
-    public func loginUser(username: String?, email: String?, password: String, completion: @escaping (Bool) -> Void) {
+    public func loginUser(username: String?, email: String?, password: String, completion: @escaping (Result<mockUser, Error>) -> Void) {
         if let email = email {
             //email login
             Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
                 guard authResult != nil, error == nil else {
-                completion(false)
                     return
                 }
     
-                completion(true)
+            
             }
         }
         else if let username = username {
@@ -80,4 +92,10 @@ public class AuthManager {
         }
     }
     
+    public func makeAlert(tittleInput: String , messageInput: String){
+           
+           let alert = UIAlertController(title: tittleInput, message: messageInput, preferredStyle: UIAlertController.Style.alert)
+           let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+           alert.addAction(okButton)
+       }
 }

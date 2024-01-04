@@ -11,7 +11,7 @@ pod 'FirebaseAnalytics'
 pod 'FirebaseAuth'
 pod 'FirebaseStorage'
 pod 'FirebaseCore'
-pod 'FirebaseDatabase'
+pod 'FirebaseFirestore'
 pod 'SDWebImage', '~> 5.0'
 
   target 'theMostTests' do
