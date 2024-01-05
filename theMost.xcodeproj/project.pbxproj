@@ -44,6 +44,7 @@
 		BFE2A4242B3C7B6500EABD48 /* LikeEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE2A4232B3C7B6500EABD48 /* LikeEventTableViewCell.swift */; };
 		BFE2A4262B3DFE9200EABD48 /* FriendsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE2A4252B3DFE9200EABD48 /* FriendsListViewController.swift */; };
 		BFE2A4282B3E016A00EABD48 /* FriendsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE2A4272B3E016A00EABD48 /* FriendsListTableViewCell.swift */; };
+		BFE2A42A2B48198C00EABD48 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE2A4292B48198C00EABD48 /* Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +111,7 @@
 		BFE2A4232B3C7B6500EABD48 /* LikeEventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeEventTableViewCell.swift; sourceTree = "<group>"; };
 		BFE2A4252B3DFE9200EABD48 /* FriendsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListViewController.swift; sourceTree = "<group>"; };
 		BFE2A4272B3E016A00EABD48 /* FriendsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListTableViewCell.swift; sourceTree = "<group>"; };
+		BFE2A4292B48198C00EABD48 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		C1705B4470319B986A6C0D60 /* Pods_theMost.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_theMost.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -238,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				BFE2A4132B37340500EABD48 /* Models.swift */,
+				BFE2A4292B48198C00EABD48 /* Extension.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -566,6 +569,7 @@
 				BFE2A4242B3C7B6500EABD48 /* LikeEventTableViewCell.swift in Sources */,
 				BFE2A3B82B2A57F700EABD48 /* FeedViewController.swift in Sources */,
 				BFE2A41D2B3C576100EABD48 /* NoNotificationView.swift in Sources */,
+				BFE2A42A2B48198C00EABD48 /* Extension.swift in Sources */,
 				BFE2A3F42B2A655E00EABD48 /* AuthManager.swift in Sources */,
 				BFE2A40A2B37171200EABD48 /* FeedPostTableViewCell.swift in Sources */,
 				BFE2A3F22B2A642B00EABD48 /* SignUpViewController.swift in Sources */,

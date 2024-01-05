@@ -20,9 +20,10 @@ public class DatabaseManager {
     
     public func insertNewUser(newUser : mockUser, completion: @escaping (Bool) -> Void) {
         let reference = database.document("User/\(newUser.username)")
-        let data = ["username": newUser.username,
-                    "email": newUser.email,
-                    ] as [String : Any]
+        guard let data = newUser.asDictionary() else{
+            completion(false)
+            return
+        }
         reference.setData(data) { error in
             completion(error == nil)
         }
@@ -31,9 +32,12 @@ public class DatabaseManager {
     public func findUser(with email: String, completion: @escaping (mockUser?) -> Void){
         let ref = database.collection("User")
         ref.getDocuments { snapshot, error in
-            guard let users = snapshot?.documents, error == nil else {
+            guard let users = snapshot?.documents.compactMap({ mockUser(with:$0.data()) }), error == nil else {
+                completion(nil)
                 return
             }
+            let user = users.first(where:{ $0.email == email})
+            completion(user)
         }
     }
 

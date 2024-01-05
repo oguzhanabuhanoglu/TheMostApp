@@ -25,6 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             
             let board = UIStoryboard(name: "Main", bundle: nil)
             let tabBar = board.instantiateViewController(identifier: "tabBar") as! UITabBarController
+            tabBar.selectedIndex = 1
             window.rootViewController = tabBar
         }else{
             let vc = LogInViewController()

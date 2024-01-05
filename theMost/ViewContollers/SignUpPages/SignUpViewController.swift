@@ -20,6 +20,7 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate, U
         imageView.contentMode = .scaleAspectFill
         imageView.image = UIImage(systemName: "person.circle")
         imageView.tintColor = .secondaryLabel
+        imageView.isUserInteractionEnabled = true
         return imageView
     }()
     
@@ -86,19 +87,18 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate, U
         view.backgroundColor = .systemBackground
         navigationItem.title = "Create New Account"
         
+        addSubviews()
+        addImageGesture()
+        
         usernameText.delegate = self
         emailText.delegate = self
         passwordText.delegate = self
-        
-        addSubviews()
-        
+    
         signUpButton.addTarget(self, action: #selector(didTapSignUpButton), for: UIControl.Event.touchUpInside)
-        
-        addImageGesture()
+    
     }
     
     private func addSubviews(){
-        
         view.addSubview(profilePhoto)
         view.addSubview(usernameText)
         view.addSubview(emailText)
@@ -125,15 +125,16 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate, U
         signUpButton.addTarget(self, action: #selector(didTapSignUpButton), for: UIControl.Event.touchUpInside)
     }
     
+    
     //IMAGE PİCKER STUFF---------------------------------------------------------------------
     private func addImageGesture() {
-        let tap = UIGestureRecognizer(target: self, action: #selector(didTapImage))
-        profilePhoto.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapImage))
         profilePhoto.addGestureRecognizer(tap)
     }
     
     @objc func didTapImage() {
         let sheet = UIAlertController(title: "Profile Picture", message: "Make easier to friends find you.", preferredStyle: UIAlertController.Style.actionSheet)
+        
         sheet.addAction(UIAlertAction(title: "Take a photo", style: UIAlertAction.Style.default, handler: { [weak self] _ in
             DispatchQueue.main.async {
                 let picker = UIImagePickerController()
@@ -143,6 +144,7 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate, U
                 self?.present(picker, animated: true)
             }
         }))
+        
         sheet.addAction(UIAlertAction(title: "Choose a photo", style: UIAlertAction.Style.default, handler: { [weak self] _ in
             DispatchQueue.main.async {
                 let picker = UIImagePickerController()
@@ -152,14 +154,17 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate, U
                 self?.present(picker, animated: true)
             }
         }))
+        
         sheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
         
         present(sheet, animated: true)
     }
     
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true)
     }
+    
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true)
@@ -190,15 +195,21 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate, U
                 let board = UIStoryboard(name: "Main", bundle: nil)
                 let tabBar = board.instantiateViewController(identifier: "tabBar") as! UITabBarController
                 tabBar.modalPresentationStyle = .fullScreen
+                tabBar.selectedIndex = 2
                 self.present(tabBar, animated: true)
             case.failure(let error):
-                print(error)
+                self.makeAlert(tittleInput: "ERROR", messageInput: error.localizedDescription ?? "We are unable to sign you up")
             }
         }
-        
-        
-       }
+    }
     
+    //MAKE ALERT
+    func makeAlert(tittleInput: String , messageInput: String){
+        let alert = UIAlertController(title: tittleInput, message: messageInput, preferredStyle: UIAlertController.Style.alert)
+        let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default,handler: nil)
+        alert.addAction(okButton)
+        present(alert, animated: true, completion: nil)
+    }
  
      
     }

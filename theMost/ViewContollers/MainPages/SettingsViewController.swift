@@ -121,9 +121,10 @@ final class SettingsViewController: UIViewController, UITableViewDelegate, UITab
     private func didTapLogOutButton() {
         
         let actionSheet = UIAlertController(title: "Log Out", message: "Are you sure you want to log out", preferredStyle: UIAlertController.Style.actionSheet)
+        
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+        
         actionSheet.addAction(UIAlertAction(title: "Log Out", style: UIAlertAction.Style.destructive, handler: { _ in
-            
             AuthManager.shared.logOut { success in
                 DispatchQueue.main.async {
                     if success{
@@ -134,11 +135,11 @@ final class SettingsViewController: UIViewController, UITableViewDelegate, UITab
                     }else{
                         //error
                         fatalError("Could not log out user")
-                        
                     }
                 }
             }
         }))
+        
         present(actionSheet, animated: true)
         //for ipads
         actionSheet.popoverPresentationController?.sourceView = tableView

@@ -152,7 +152,12 @@ class LogInViewController: UIViewController{
         AuthManager.shared.loginUser(username: username, email: email, password: password) { result in
             switch result {
             case.success(let user):
-                break
+                let board = UIStoryboard(name: "Main", bundle: nil)
+                let tabBar = board.instantiateViewController(identifier: "tabBar") as! UITabBarController
+                tabBar.modalPresentationStyle = .fullScreen
+                tabBar.selectedIndex = 1
+                self.present(tabBar, animated: true)
+                print(AuthManager.shared.auth.currentUser?.email)
             case.failure(let error):
                 self.makeAlert(tittleInput: "ERROR", messageInput: error.localizedDescription ?? "We are unable to log you in")
             }
@@ -165,6 +170,7 @@ class LogInViewController: UIViewController{
         
         let signUpVC = SignUpViewController()
         signUpVC.title = "Create User"
+        signUpVC.modalPresentationStyle = .fullScreen
         present(UINavigationController(rootViewController: signUpVC), animated: true)
         
     }
@@ -179,12 +185,11 @@ class LogInViewController: UIViewController{
     
     
     func makeAlert(tittleInput: String , messageInput: String){
-
         let alert = UIAlertController(title: tittleInput, message: messageInput, preferredStyle: UIAlertController.Style.alert)
         let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default,handler: nil)
         alert.addAction(okButton)
         present(alert, animated: true, completion: nil)
-       }
+    }
 
 
 }
